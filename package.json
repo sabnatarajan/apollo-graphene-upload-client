@@ -1,6 +1,6 @@
 {
   "name": "apollo-graphene-upload-client",
-  "version": "1.0.2-alpha2",
+  "version": "1.0.0-alpha3",
   "description":
     "Enhances Apollo Client for intuitive file uploads via GraphQL mutations.",
   "license": "MIT",
