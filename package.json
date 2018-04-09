@@ -1,0 +1,113 @@
+{
+  "name": "apollo-graphene-upload-client",
+  "version": "1.0.2-alpha2",
+  "description":
+    "Enhances Apollo Client for intuitive file uploads via GraphQL mutations.",
+  "license": "MIT",
+  "author": {
+    "name": "Sabareesh Natarajan",
+    "email": "me@sabareeshnatarajan.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sabnatarajan/apollo-graphene-upload-client.git"
+  },
+  "homepage":
+    "https://github.com/sabnatarajan/apollo-graphene-upload-client#readme",
+  "bugs":
+    "https://github.com/sabnatarajan/apollo-graphene-upload-client/issues",
+  "keywords": [
+    "apollo",
+    "djano",
+    "graphene",
+    "python",
+    "client",
+    "link",
+    "graphql",
+    "file",
+    "upload",
+    "multipart",
+    "react",
+    "native"
+  ],
+  "files": ["lib"],
+  "main": "lib/main",
+  "module": "lib/module",
+  "engines": {
+    "node": ">=6.10"
+  },
+  "browserslist": ">1%",
+  "dependencies": {
+    "@babel/runtime": "^7.0.0-beta.40",
+    "apollo-link-http-common": "^0.2.3",
+    "extract-files": "^3.1.0"
+  },
+  "peerDependencies": {
+    "apollo-link": "^1.2.1",
+    "graphql": "^0.13.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.40",
+    "@babel/core": "^7.0.0-beta.40",
+    "@babel/plugin-transform-runtime": "^7.0.0-beta.40",
+    "@babel/preset-env": "^7.0.0-beta.40",
+    "apollo-link": "^1.2.1",
+    "cross-env": "^5.1.3",
+    "eslint": "^4.18.2",
+    "eslint-plugin-prettier": "^2.6.0",
+    "graphql": "^0.13.2",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.0.0",
+    "npm-run-all": "^4.1.2",
+    "prettier": "^1.11.1",
+    "rimraf": "^2.6.2"
+  },
+  "scripts": {
+    "clean": "rimraf lib",
+    "prebuild": "npm run clean",
+    "build": "run-p build:*",
+    "build:main": "babel src -d lib/main",
+    "build:module": "cross-env MODULE=true babel src -d lib/module",
+    "postbuild": "prettier 'lib/**/*.js' --write",
+    "prewatch": "npm run clean",
+    "watch": "run-p 'build:* -- --watch'",
+    "lint": "run-p lint:*",
+    "lint:eslint": "eslint .",
+    "lint:prettier": "prettier '**/*.{json,md}' -l",
+    "fix": "run-p fix:*",
+    "fix:eslint": "eslint . --fix",
+    "fix:prettier": "prettier '**/*.{json,md}' --write",
+    "precommit": "lint-staged",
+    "prepublishOnly": "run-p lint build"
+  },
+  "lint-staged": {
+    "*.js": "eslint",
+    "*.{json,md}": "prettier -l"
+  },
+  "eslintIgnore": ["!.*", "node_modules", "lib"],
+  "eslintConfig": {
+    "parserOptions": {
+      "sourceType": "module",
+      "ecmaVersion": 2017,
+      "ecmaFeatures": {
+        "experimentalObjectRestSpread": true
+      }
+    },
+    "env": {
+      "es6": true,
+      "node": true,
+      "browser": true
+    },
+    "extends": ["eslint:recommended"],
+    "plugins": ["prettier"],
+    "rules": {
+      "curly": ["error", "multi"],
+      "prettier/prettier": "error"
+    }
+  },
+  "prettier": {
+    "proseWrap": "never",
+    "semi": false,
+    "singleQuote": true
+  }
+}
